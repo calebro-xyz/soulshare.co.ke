@@ -8,15 +8,14 @@ import Logo from '../../public/logo.png';
 
 const navigation = [
   { name: 'About', href: '/about' },
-  { name: 'Features', href: '/features' },
+  { name: 'Services', href: '/services' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Company', href: '/company' },
 ];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <header className='absolute bg-white inset-x-0 top-0 z-50'>
+    <header className='absolute inset-x-0 top-0 z-50'>
       <nav
         className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'
         aria-label='Global'>
@@ -57,11 +56,11 @@ export default function Header() {
           ))}
         </div>
         <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-          <a
-            href='/'
-            className='text-sm font-normal leading-6 text-gray-900'>
+          <button
+            type='button'
+            className='rounded-md px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
             coming soon
-          </a>
+          </button>
         </div>
       </nav>
       <Dialog
@@ -108,11 +107,11 @@ export default function Header() {
                 ))}
               </div>
               <div className='py-6'>
-                <a
-                  href='/'
-                  className='-mx-3 block italic rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
+                <button
+                  type='button'
+                  className='rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
                   coming soon
-                </a>
+                </button>
               </div>
             </div>
           </div>

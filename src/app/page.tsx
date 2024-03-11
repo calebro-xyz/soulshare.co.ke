@@ -1,6 +1,5 @@
-'use client';
-
 import Image from 'next/image';
+import Newsletter from '@/components/newsletter';
 
 const stats = [
   {
@@ -19,34 +18,34 @@ const stats = [
 ];
 const values = [
   {
-    name: 'Be world-class',
+    name: 'Inclusive and Judgement-Free Spaces:',
     description:
-      'Aut illo quae. Ut et harum ea animi natus. Culpa maiores et sed sint et magnam exercitationem quia. Ullam voluptas nihil vitae dicta molestiae et. Aliquid velit porro vero.',
+      'Our community provides inclusive and judgement-free spaces where individuals can share their struggles without fear of discrimination or stigma, fostering a supportive environment for healing and growth.',
   },
   {
-    name: 'Share everything you know',
+    name: 'Emotional Support',
     description:
-      'Mollitia delectus a omnis. Quae velit aliquid. Qui nulla maxime adipisci illo id molestiae. Cumque cum ut minus rerum architecto magnam consequatur. Quia quaerat minima.',
+      'Members receive empathetic emotional support from fellow community members who understand and validate their experiences, offering comfort and solidarity during difficult times.',
   },
   {
-    name: 'Always learning',
+    name: 'Professional Guidance',
     description:
-      'Aut repellendus et officiis dolor possimus. Deserunt velit quasi sunt fuga error labore quia ipsum. Commodi autem voluptatem nam. Quos voluptatem totam.',
+      'Our community offers access to professional guidance from mental health experts, including therapists and counselors, who provide valuable insights, resources, and advice to help members navigate their mental health journey.',
   },
   {
-    name: 'Be supportive',
+    name: 'Privacy and Judgement-Free Environment:',
     description:
-      'Magnam provident veritatis odit. Vitae eligendi repellat non. Eum fugit impedit veritatis ducimus. Non qui aspernatur laudantium modi. Praesentium rerum error deserunt harum.',
+      'We prioritize privacy and maintain a judgement-free environment where individuals can feel safe discussing sensitive topics and seeking support without fear of their personal information being compromised or their experiences being dismissed.',
   },
   {
-    name: 'Take responsibility',
+    name: 'Community and Belonging:',
     description:
-      'Sit minus expedita quam in ullam molestiae dignissimos in harum. Tenetur dolorem iure. Non nesciunt dolorem veniam necessitatibus laboriosam voluptas perspiciatis error.',
+      'Joining our community provides a sense of belonging and connection with others who share similar experiences, fostering meaningful relationships and a supportive network to lean on during challenging times.',
   },
   {
-    name: 'Enjoy downtime',
+    name: 'Support for Mental Health Advocates',
     description:
-      'Ipsa in earum deserunt aut. Quos minus aut animi et soluta. Ipsum dicta ut quia eius. Possimus reprehenderit iste aspernatur ut est velit consequatur distinctio.',
+      'Our community offers support for mental health advocates, providing resources, encouragement, and a platform to raise awareness, promote education, and advocate for positive change in mental health care.',
   },
 ];
 
@@ -104,7 +103,7 @@ export default function Home() {
             <div className='mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32'>
               <div className='mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center'>
                 <div className='w-full max-w-xl lg:shrink-0 xl:max-w-2xl'>
-                  <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
+                  <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl'>
                     Every Conversation Matters, Every Voice is Valued
                   </h1>
                   <p className='relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none'>
@@ -121,11 +120,11 @@ export default function Home() {
                   <div className='ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80'>
                     <div className='relative'>
                       <Image
-                        src='https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80'
+                        src='https://images.unsplash.com/photo-1604881991720-f91add269bed?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
                         alt=''
                         className='aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg'
-                        width={120}
-                        height={196}
+                        width={1080}
+                        height={960}
                       />
                       <div className='pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10' />
                     </div>
@@ -133,21 +132,21 @@ export default function Home() {
                   <div className='mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36'>
                     <div className='relative'>
                       <Image
-                        src='https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80'
+                        src='https://images.pexels.com/photos/5159234/pexels-photo-5159234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
                         alt=''
                         className='aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg'
-                        width={120}
-                        height={196}
+                        width={1080}
+                        height={960}
                       />
                       <div className='pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10' />
                     </div>
                     <div className='relative'>
                       <Image
-                        src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80'
+                        src='https://images.pexels.com/photos/8042458/pexels-photo-8042458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
                         alt=''
                         className='aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg'
-                        width={120}
-                        height={196}
+                        width={1080}
+                        height={960}
                       />
                       <div className='pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10' />
                     </div>
@@ -155,21 +154,21 @@ export default function Home() {
                   <div className='w-44 flex-none space-y-8 pt-32 sm:pt-0'>
                     <div className='relative'>
                       <Image
-                        src='https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80'
+                        src='https://images.pexels.com/photos/10264752/pexels-photo-10264752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
                         alt=''
                         className='aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg'
-                        width={120}
-                        height={196}
+                        width={1200}
+                        height={960}
                       />
                       <div className='pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10' />
                     </div>
                     <div className='relative'>
                       <Image
-                        src='https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80'
+                        src='https://images.pexels.com/photos/3856026/pexels-photo-3856026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
                         alt=''
                         className='aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg'
-                        width={120}
-                        height={196}
+                        width={1200}
+                        height={960}
                       />
                       <div className='pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10' />
                     </div>
@@ -248,9 +247,8 @@ export default function Home() {
               Our values
             </h2>
             <p className='mt-6 text-lg leading-8 text-gray-600'>
-              Lorem ipsum dolor sit amet consect adipisicing elit.
-              Possimus magnam voluptatum cupiditate veritatis in
-              accusamus quisquam.
+              These are the reasons why you should be part of Soul
+              Share Network
             </p>
           </div>
           <dl className='mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3'>
@@ -268,86 +266,7 @@ export default function Home() {
         </div>
 
         {/* Logo cloud */}
-        <div className='relative isolate -z-10 mt-32 sm:mt-48'>
-          <div className='absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 justify-center overflow-hidden [mask-image:radial-gradient(50%_45%_at_50%_55%,white,transparent)]'>
-            <svg
-              className='h-[40rem] w-[80rem] flex-none stroke-gray-200'
-              aria-hidden='true'>
-              <defs>
-                <pattern
-                  id='e9033f3e-f665-41a6-84ef-756f6778e6fe'
-                  width={200}
-                  height={200}
-                  x='50%'
-                  y='50%'
-                  patternUnits='userSpaceOnUse'
-                  patternTransform='translate(-100 0)'>
-                  <path
-                    d='M.5 200V.5H200'
-                    fill='none'
-                  />
-                </pattern>
-              </defs>
-              <svg
-                x='50%'
-                y='50%'
-                className='overflow-visible fill-gray-50'>
-                <path
-                  d='M-300 0h201v201h-201Z M300 200h201v201h-201Z'
-                  strokeWidth={0}
-                />
-              </svg>
-              <rect
-                width='100%'
-                height='100%'
-                strokeWidth={0}
-                fill='url(#e9033f3e-f665-41a6-84ef-756f6778e6fe)'
-              />
-            </svg>
-          </div>
-          <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-            <h2 className='text-center text-lg font-semibold leading-8 text-gray-900'>
-              Trusted by the world’s most innovative teams
-            </h2>
-            <div className='mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5'>
-              <Image
-                className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-                src='https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg'
-                alt='Transistor'
-                width={158}
-                height={48}
-              />
-              <Image
-                className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-                src='https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg'
-                alt='Reform'
-                width={158}
-                height={48}
-              />
-              <Image
-                className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-                src='https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg'
-                alt='Tuple'
-                width={158}
-                height={48}
-              />
-              <Image
-                className='col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1'
-                src='https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg'
-                alt='SavvyCal'
-                width={158}
-                height={48}
-              />
-              <Image
-                className='col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1'
-                src='https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg'
-                alt='Statamic'
-                width={158}
-                height={48}
-              />
-            </div>
-          </div>
-        </div>
+        <Newsletter />
       </main>
     </div>
   );
