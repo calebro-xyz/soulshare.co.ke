@@ -18,7 +18,7 @@ const stats = [
 ];
 const values = [
   {
-    name: 'Inclusive and Judgement-Free Spaces:',
+    name: 'Inclusive and Judgement-Free Spaces',
     description:
       'Our community provides inclusive and judgement-free spaces where individuals can share their struggles without fear of discrimination or stigma, fostering a supportive environment for healing and growth.',
   },
@@ -33,12 +33,12 @@ const values = [
       'Our community offers access to professional guidance from mental health experts, including therapists and counselors, who provide valuable insights, resources, and advice to help members navigate their mental health journey.',
   },
   {
-    name: 'Privacy and Judgement-Free Environment:',
+    name: 'Privacy',
     description:
       'We prioritize privacy and maintain a judgement-free environment where individuals can feel safe discussing sensitive topics and seeking support without fear of their personal information being compromised or their experiences being dismissed.',
   },
   {
-    name: 'Community and Belonging:',
+    name: 'Community and Belonging',
     description:
       'Joining our community provides a sense of belonging and connection with others who share similar experiences, fostering meaningful relationships and a supportive network to lean on during challenging times.',
   },
