@@ -10,14 +10,14 @@ const timeline = [
   {
     name: 'Market Research',
     description: '',
-    date: 'Aug 2024',
-    dateTime: '2024-8',
+    date: 'June 2024',
+    dateTime: '2024-5',
   },
   {
     name: 'Released beta',
     description: '',
-    date: 'July 2024',
-    dateTime: '2022-06',
+    date: 'Aug 2024',
+    dateTime: '2022-08',
   },
   {
     name: 'Global launch of product',
