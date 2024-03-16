@@ -1,4 +1,37 @@
-export default function Newsletter() {
+'use client';
+
+import { useState } from 'react';
+
+const NewsletterForm = () => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, message }),
+      });
+
+      if (response.ok) {
+        setStatus('Your message was sent successfully!');
+        setEmail('');
+        setMessage('');
+      } else {
+        setStatus('An error occurred. Please try again later.');
+      }
+    } catch (error) {
+      setStatus('An error occurred. Please try again later.');
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className='bg-white py-16 sm:py-24'>
       <div className='mx-auto max-w-7xl sm:px-6 lg:px-8'>
@@ -20,6 +53,8 @@ export default function Newsletter() {
               id='email-address'
               name='email'
               type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               autoComplete='email'
               required
               className='min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
@@ -30,6 +65,7 @@ export default function Newsletter() {
               className='flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'>
               Notify me
             </button>
+            {status && <p>{status}</p>}
           </form>
           <svg
             viewBox='0 0 1024 1024'
@@ -63,4 +99,6 @@ export default function Newsletter() {
       </div>
     </div>
   );
-}
+};
+
+export default NewsletterForm;
