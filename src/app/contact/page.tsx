@@ -1,24 +1,48 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+'use client';
+
+import { useState } from 'react';
 import {
   BuildingOffice2Icon,
   EnvelopeIcon,
   PhoneIcon,
 } from '@heroicons/react/24/outline';
 
-export default function Contact() {
+const ContactForm = () => {
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, fname, lname, phone, message }),
+      });
+
+      if (response.ok) {
+        setStatus('Your message was sent successfully!');
+        setFname('');
+        setLname('');
+        setEmail('');
+        setPhone('');
+        setMessage('');
+      } else {
+        setStatus('An error occurred. Please try again later.');
+      }
+    } catch (error) {
+      setStatus('An error occurred. Please try again later.');
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className='relative isolate bg-white'>
       <div className='mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2'>
@@ -82,11 +106,7 @@ export default function Contact() {
                     aria-hidden='true'
                   />
                 </dt>
-                <dd>
-                  Kenya, East Africa
-                  <br />
-                  Nairobi, 00100
-                </dd>
+                <dd>Nairobi, Kenya</dd>
               </div>
               <div className='flex gap-x-4'>
                 <dt className='flex-none'>
@@ -99,8 +119,8 @@ export default function Contact() {
                 <dd>
                   <a
                     className='hover:text-gray-900'
-                    href='tel:+1 (555) 234-5678'>
-                    + 254 123 456 789
+                    href='tel:+254 724 461 893'>
+                    +254 724 461 893
                   </a>
                 </dd>
               </div>
@@ -124,6 +144,7 @@ export default function Contact() {
           </div>
         </div>
         <form
+          onSubmit={handleSubmit}
           action='#'
           method='POST'
           className='px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48'>
@@ -154,8 +175,8 @@ export default function Contact() {
                 <div className='mt-2.5'>
                   <input
                     type='text'
-                    name='last-name'
-                    id='last-name'
+                    name='lname'
+                    id='lname'
                     autoComplete='family-name'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   />
@@ -186,8 +207,8 @@ export default function Contact() {
                 <div className='mt-2.5'>
                   <input
                     type='tel'
-                    name='phone-number'
-                    id='phone-number'
+                    name='phone'
+                    id='phone'
                     autoComplete='tel'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   />
@@ -216,10 +237,13 @@ export default function Contact() {
                 className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                 Send message
               </button>
+              {status && <p>{status}</p>}
             </div>
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
+
+export default ContactForm;

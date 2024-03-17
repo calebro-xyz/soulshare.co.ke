@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
 export async function POST(request: any) {
-  const { email, message } = await request.json();
+  const { email, fname, lname, message, phone } =
+    await request.json();
 
   try {
     const response = await fetch(
@@ -16,7 +17,10 @@ export async function POST(request: any) {
           records: [
             {
               fields: {
+                Fname: fname,
+                Lname: lname,
                 Email: email,
+                Phone: phone,
                 Message: message,
               },
             },
