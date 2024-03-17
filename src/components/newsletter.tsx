@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const NewsletterForm = () => {
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+
   const [status, setStatus] = useState('');
 
   const handleSubmit = async (e: any) => {
@@ -16,18 +16,17 @@ const NewsletterForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, message }),
+        body: JSON.stringify({ email }),
       });
 
       if (response.ok) {
         setStatus('Your message was sent successfully!');
         setEmail('');
-        setMessage('');
       } else {
-        setStatus('An error occurred. Please try again later.');
+        setStatus('An error occurred. Please try again.');
       }
     } catch (error) {
-      setStatus('An error occurred. Please try again later.');
+      setStatus('An error occurred. Please try again.');
       console.error('Error:', error);
     }
   };
@@ -43,7 +42,9 @@ const NewsletterForm = () => {
             Sign up for our newsletter to stay up to date with the
             latest news and updates.
           </p>
-          <form className='mx-auto mt-10 flex max-w-md gap-x-4'>
+          <form
+            onSubmit={handleSubmit}
+            className='mx-auto mt-10 flex max-w-md gap-x-4'>
             <label
               htmlFor='email-address'
               className='sr-only'>
