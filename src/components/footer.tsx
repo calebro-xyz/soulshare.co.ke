@@ -1,7 +1,7 @@
 const navigation = [
   {
     name: 'Facebook',
-    href: '#',
+    href: 'https://www.facebook.com/soulshare.co?mibextid=ZbWKwL',
     icon: (props: any) => (
       <svg
         fill='currentColor'
@@ -17,7 +17,7 @@ const navigation = [
   },
   {
     name: 'Instagram',
-    href: '#',
+    href: 'https://www.instagram.com/soul_share.co?igsh=MXdsdmwybTd6aW45NA==',
     icon: (props: any) => (
       <svg
         fill='currentColor'

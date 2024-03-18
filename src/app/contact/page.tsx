@@ -135,8 +135,8 @@ const ContactForm = () => {
                 <dd>
                   <a
                     className='hover:text-gray-900'
-                    href='mailto:hello@example.com'>
-                    hello@soulshare.co.ke
+                    href='soulshare.ke@gmail.com'>
+                    soulshare.ke@gmail.com
                   </a>
                 </dd>
               </div>
