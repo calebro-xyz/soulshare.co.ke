@@ -6,6 +6,7 @@ import {
   EnvelopeIcon,
   PhoneIcon,
 } from '@heroicons/react/24/outline';
+import Airtable from 'airtable';
 
 const ContactForm = () => {
   const [fname, setFname] = useState('');
@@ -19,27 +20,37 @@ const ContactForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, fname, lname, phone, message }),
-      });
+      const base = new Airtable({
+        apiKey:
+          'patXG8nf1g8a4kNug.51f6e4b1027dd4b29e71d01574cfccc4b260b609b75376b1d01f124dc2b6d9aa',
+      }).base('apps8wi0IrBOr3OaB');
 
-      if (response.ok) {
-        setStatus('Your message was sent successfully!');
-        setFname('');
-        setLname('');
-        setEmail('');
-        setPhone('');
-        setMessage('');
-      } else {
-        setStatus('An error occurred. Please try again later.');
-      }
-    } catch (error) {
-      setStatus('An error occurred. Please try again later.');
-      console.error('Error:', error);
+      base('Contact').create(
+        {
+          Email: email,
+          Fname: fname,
+          Lname: lname,
+          Phone: phone,
+          Message: message,
+        },
+        function (err: any, record: any) {
+          if (err) {
+            console.error(err);
+            setStatus('An error occurred. Please try again.');
+            return;
+          }
+          console.log(record.getId());
+          setStatus('Contact form submitted successfully!');
+          setFname('');
+          setLname('');
+          setEmail('');
+          setPhone('');
+          setMessage('');
+        }
+      );
+    } catch (err) {
+      setStatus('An error occurred. Please try again.');
+      console.error('Error:', err);
     }
   };
 
@@ -159,8 +170,9 @@ const ContactForm = () => {
                 <div className='mt-2.5'>
                   <input
                     type='text'
-                    name='first-name'
-                    id='first-name'
+                    name='fname'
+                    id='fname'
+                    onChange={(e) => setFname(e.target.value)}
                     autoComplete='given-name'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   />
@@ -177,6 +189,7 @@ const ContactForm = () => {
                     type='text'
                     name='lname'
                     id='lname'
+                    onChange={(e) => setLname(e.target.value)}
                     autoComplete='family-name'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   />
@@ -193,6 +206,7 @@ const ContactForm = () => {
                     type='email'
                     name='email'
                     id='email'
+                    onChange={(e) => setEmail(e.target.value)}
                     autoComplete='email'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   />
@@ -209,6 +223,7 @@ const ContactForm = () => {
                     type='tel'
                     name='phone'
                     id='phone'
+                    onChange={(e) => setPhone(e.target.value)}
                     autoComplete='tel'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   />
@@ -224,6 +239,7 @@ const ContactForm = () => {
                   <textarea
                     name='message'
                     id='message'
+                    onChange={(e) => setMessage(e.target.value)}
                     rows={4}
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                     defaultValue={''}
@@ -237,7 +253,7 @@ const ContactForm = () => {
                 className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                 Send message
               </button>
-              {status && <p>{status}</p>}
+              {status && <p className='text-white'>{status}</p>}
             </div>
           </div>
         </form>
