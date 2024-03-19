@@ -36,7 +36,7 @@ const ContactForm = () => {
         function (err: any, record: any) {
           if (err) {
             console.error(err);
-            setStatus('An error occurred. Please try again.');
+            setStatus('Try filling the form again.');
             return;
           }
           console.log(record.getId());
@@ -172,6 +172,7 @@ const ContactForm = () => {
                     type='text'
                     name='fname'
                     id='fname'
+                    value={fname}
                     onChange={(e) => setFname(e.target.value)}
                     autoComplete='given-name'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -189,6 +190,7 @@ const ContactForm = () => {
                     type='text'
                     name='lname'
                     id='lname'
+                    value={lname}
                     onChange={(e) => setLname(e.target.value)}
                     autoComplete='family-name'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -206,6 +208,7 @@ const ContactForm = () => {
                     type='email'
                     name='email'
                     id='email'
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     autoComplete='email'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -223,6 +226,7 @@ const ContactForm = () => {
                     type='tel'
                     name='phone'
                     id='phone'
+                    value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     autoComplete='tel'
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -239,6 +243,7 @@ const ContactForm = () => {
                   <textarea
                     name='message'
                     id='message'
+                    value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
                     className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -247,13 +252,17 @@ const ContactForm = () => {
                 </div>
               </div>
             </div>
-            <div className='mt-8 flex justify-end'>
-              <button
-                type='submit'
-                className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                Send message
-              </button>
-              {status && <p className='text-white'>{status}</p>}
+            <div className='mt-8 flex-col gap-2 flex justify-end'>
+              <div>
+                <button
+                  type='submit'
+                  className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                  Send message
+                </button>
+              </div>
+              <div>
+                {status && <p className='text-black'>{status}</p>}
+              </div>
             </div>
           </div>
         </form>

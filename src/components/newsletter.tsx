@@ -14,10 +14,8 @@ const NewsletterForm = () => {
         apiKey:
           'patXG8nf1g8a4kNug.51f6e4b1027dd4b29e71d01574cfccc4b260b609b75376b1d01f124dc2b6d9aa',
       }).base('apps8wi0IrBOr3OaB');
-
-      // Use the 'email' state directly instead of accessing the DOM
       base('Email').create(
-        { Email: email }, // Use the 'email' state here
+        { Email: email },
         function (err: any, record: any) {
           if (err) {
             console.error(err);
