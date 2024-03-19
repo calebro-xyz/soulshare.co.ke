@@ -1,33 +1,37 @@
 'use client';
-
 import { useState } from 'react';
+import Airtable from 'airtable'; // Importing Airtable directly from the package
 
 const NewsletterForm = () => {
   const [email, setEmail] = useState('');
-
   const [status, setStatus] = useState('');
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
+      const base = new Airtable({
+        apiKey:
+          'patXG8nf1g8a4kNug.51f6e4b1027dd4b29e71d01574cfccc4b260b609b75376b1d01f124dc2b6d9aa',
+      }).base('apps8wi0IrBOr3OaB');
 
-      if (response.ok) {
-        setStatus('Your message was sent successfully!');
-        setEmail('');
-      } else {
-        setStatus('An error occurred. Please try again.');
-      }
-    } catch (error) {
+      // Use the 'email' state directly instead of accessing the DOM
+      base('Email').create(
+        { Email: email }, // Use the 'email' state here
+        function (err: any, record: any) {
+          if (err) {
+            console.error(err);
+            setStatus('An error occurred. Please try again.');
+            return;
+          }
+          console.log(record.getId());
+          setStatus('Email submitted successfully!');
+          setEmail('');
+        }
+      );
+    } catch (err) {
       setStatus('An error occurred. Please try again.');
-      console.error('Error:', error);
+      console.error('Error:', err);
     }
   };
 
@@ -45,28 +49,34 @@ const NewsletterForm = () => {
           <form
             onSubmit={handleSubmit}
             className='mx-auto mt-10 flex max-w-md gap-x-4'>
-            <label
-              htmlFor='email-address'
-              className='sr-only'>
-              Email address
-            </label>
-            <input
-              id='email-address'
-              name='email'
-              type='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete='email'
-              required
-              className='min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
-              placeholder='Enter your email'
-            />
-            <button
-              type='submit'
-              className='flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'>
-              Notify me
-            </button>
-            {status && <p>{status}</p>}
+            <div className='flex flex-col gap-2'>
+              <div className='space-x-4 flex place-content-center'>
+                <label
+                  htmlFor='email-address'
+                  className='sr-only'>
+                  Email address
+                </label>
+                <input
+                  id='email-address'
+                  name='email'
+                  type='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete='email'
+                  required
+                  className='min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6'
+                  placeholder='Enter your email'
+                />
+                <button
+                  type='submit'
+                  className='flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'>
+                  Notify me
+                </button>
+              </div>
+              <div>
+                {status && <p className='text-white'>{status}</p>}
+              </div>
+            </div>
           </form>
           <svg
             viewBox='0 0 1024 1024'
