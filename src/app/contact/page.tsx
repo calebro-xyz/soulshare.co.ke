@@ -144,11 +144,9 @@ const ContactForm = () => {
                   />
                 </dt>
                 <dd>
-                  <a
-                    className='hover:text-gray-900'
-                    href='soulshare.ke@gmail.com'>
+                  <span className='hover:text-gray-900'>
                     soulshare.ke@gmail.com
-                  </a>
+                  </span>
                 </dd>
               </div>
             </dl>
