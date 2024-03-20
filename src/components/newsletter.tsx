@@ -11,8 +11,7 @@ const NewsletterForm = () => {
 
     try {
       const base = new Airtable({
-        apiKey:
-          'patXG8nf1g8a4kNug.51f6e4b1027dd4b29e71d01574cfccc4b260b609b75376b1d01f124dc2b6d9aa',
+        apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY,
       }).base('apps8wi0IrBOr3OaB');
       base('Email').create(
         { Email: email },
