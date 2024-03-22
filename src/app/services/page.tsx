@@ -4,7 +4,6 @@ import {
   HeartIcon,
   HandRaisedIcon,
 } from '@heroicons/react/24/outline';
-import Newsletter from '@/components/newsletter';
 
 const features = [
   {
@@ -72,7 +71,6 @@ export default function Serivices() {
           </dl>
         </div>
       </div>
-      <Newsletter />
     </div>
   );
 }

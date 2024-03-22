@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Newsletter from '@/components/newsletter';
+import Script from 'next/script';
 
 const stats = [
   {
@@ -51,8 +51,8 @@ const values = [
 
 export default function Home() {
   return (
-    <div className='bg-white'>
-      <main className='isolate'>
+    <main className='bg-white'>
+      <div className='isolate'>
         {/* Hero section */}
         <div className='relative isolate -z-10'>
           <svg
@@ -264,10 +264,7 @@ export default function Home() {
             ))}
           </dl>
         </div>
-
-        {/* Logo cloud */}
-        <Newsletter />
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
